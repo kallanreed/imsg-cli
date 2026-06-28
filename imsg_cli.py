@@ -191,16 +191,14 @@ def print_messages(rows: Sequence[sqlite3.Row], *, scale: int, as_json: bool) ->
 def print_spans(rows: Iterable[sqlite3.Row], *, scale: int, as_json: bool) -> None:
     payload = []
     for row in rows:
+        first_message = apple_timestamp_to_datetime(row["first_raw_date"], scale)
+        last_message = apple_timestamp_to_datetime(row["last_raw_date"], scale)
         payload.append(
             {
                 "sender": row["sender"],
                 "message_count": row["message_count"],
-                "first_message": apple_timestamp_to_datetime(
-                    row["first_raw_date"], scale
-                ).isoformat(),
-                "last_message": apple_timestamp_to_datetime(
-                    row["last_raw_date"], scale
-                ).isoformat(),
+                "first_message": first_message.isoformat() if first_message else None,
+                "last_message": last_message.isoformat() if last_message else None,
             }
         )
 

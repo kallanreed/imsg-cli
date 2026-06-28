@@ -156,7 +156,7 @@ class IMessageCliTests(unittest.TestCase):
         with self.assertRaises(SystemExit) as context:
             command_delete(args)
 
-        self.assertIn("Refusing to use delete", str(context.exception))
+        self.assertIn("Refusing to use delete", str(context.exception.code))
 
 
 if __name__ == "__main__":
