@@ -221,11 +221,11 @@ def add_shared_filters(parser: argparse.ArgumentParser) -> None:
     )
     parser.add_argument(
         "--sender-like",
-        help="SQL LIKE pattern for sender/handle, e.g. '%%campaign%%' or '+1888%%'",
+        help="SQL LIKE pattern for sender/handle, for example a contains-match or a +1888 prefix match",
     )
     parser.add_argument(
         "--text-like",
-        help="SQL LIKE pattern for message text, e.g. '%%vote%%'",
+        help="SQL LIKE pattern for message text, for example a contains-match for vote",
     )
     parser.add_argument(
         "--after",
